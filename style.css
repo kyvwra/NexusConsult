@@ -1,0 +1,339 @@
+:root {
+  --bg-light: #ffffff;          
+  --bg-card: #f8fafc; 
+  --text-dark: #0f172a; 
+  --text-muted: #64748b; 
+  --tech-accent: #2563eb;   
+  --tech-accent-hover: #1d4ed8;
+  --tech-glow: rgba(37, 99, 235, 0.15);
+  --line-color: rgba(37, 99, 235, 0.08);
+}
+
+/* ========================================================
+   RESET & BASE
+======================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; text-decoration: none !important; }
+
+html, body { 
+    width: 100%; 
+    overflow-x: hidden; 
+    background-color: var(--bg-light); 
+    font-family: 'Montserrat', sans-serif; 
+    color: var(--text-dark); 
+    -webkit-font-smoothing: antialiased; 
+    scroll-behavior: smooth; 
+}
+
+/* Animații noi */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseNode {
+    0% { transform: scale(0.95); opacity: 0.5; box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5); }
+    70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+    100% { transform: scale(0.95); opacity: 0.5; box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+@keyframes floatGraphics {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+@keyframes gridMove {
+    from { background-position: 0 0; }
+    to { background-position: 40px 40px; }
+}
+
+/* ========================================================
+   NAVBAR
+======================================================== */
+.navbar { position: absolute; top: 0; width: 100%; padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+.nav-logo { font-size: 1.1rem; letter-spacing: 3px; color: var(--text-dark); text-transform: uppercase; font-weight: 700; }
+.nav-logo span { color: var(--tech-accent); }
+.nav-links { display: flex; align-items: center; }
+.nav-links a { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dark); margin-left: 30px; opacity: 0.8; transition: 0.4s ease; font-weight: 600; }
+.nav-links a:hover { opacity: 1; color: var(--tech-accent); }
+
+/* ========================================================
+   HERO SECTION
+======================================================== */
+.hero { 
+    position: relative;
+    height: 100vh; 
+    background: radial-gradient(circle at top right, #eff6ff 0%, #ffffff 70%);
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    padding: 0 10%; 
+}
+.hero::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: linear-gradient(var(--line-color) 1px, transparent 1px), linear-gradient(90deg, var(--line-color) 1px, transparent 1px);
+    background-size: 40px 40px; opacity: 0.6; animation: gridMove 20s linear infinite; z-index: 1;
+}
+.hero-content { position: relative; z-index: 2; animation: fadeInUp 1.2s ease-out; }
+.hero-brand { color: var(--text-dark); font-size: clamp(2.5rem, 6vw, 4.5rem); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 20px; font-weight: 700; }
+.hero-brand span { color: var(--tech-accent); }
+.hero-slogan { font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; color: var(--text-muted); font-weight: 500;}
+
+.page-header { padding: 180px 10% 80px; text-align: center; background: var(--bg-card); border-bottom: 1px solid var(--line-color); }
+.page-header h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: 4px; text-transform: uppercase; font-weight: 700; margin-top: 10px; }
+
+/* ========================================================
+   SPLIT SECTIONS & PURE CSS TECH GRAPHICS
+======================================================== */
+.split-section { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line-color); min-height: 65vh; }
+.split-content { padding: 100px 10%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.split-title { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 20px 0; font-weight: 700; line-height: 1.3; }
+.split-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.9; font-weight: 400; margin-bottom: 25px; }
+
+/* Tech Canvas Component (Înlocuiește pozele lipsă) */
+.split-image { position: relative; background: #fafafa; display: flex; justify-content: center; align-items: center; overflow: hidden; border-left: 1px solid var(--line-color); }
+.tech-canvas { width: 80%; height: 70%; position: relative; animation: floatGraphics 6s ease-in-out infinite; }
+.tech-matrix { position: absolute; width: 100%; height: 100%; border: 1px dashed rgba(37, 99, 235, 0.15); border-radius: 12px; display: flex; justify-content: center; align-items: center; }
+.tech-node { position: absolute; width: 14px; height: 14px; background: var(--tech-accent); border-radius: 50%; animation: pulseNode 3s infinite; }
+.node-1 { top: 20%; left: 30%; }
+.node-2 { bottom: 25%; right: 20%; animation-delay: 1s; }
+.node-3 { top: 60%; left: 15%; animation-delay: 1.5s; }
+.tech-glass-card { position: absolute; width: 60%; height: 45%; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border-radius: 8px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; transition: 0.4s; }
+.tech-glass-card:hover { transform: scale(1.03); border-color: var(--tech-accent); }
+.glass-line { height: 4px; background: #e2e8f0; border-radius: 2px; width: 80%; }
+.glass-line.active { background: var(--tech-accent); width: 40%; }
+
+/* ========================================================
+   COMPLEX EXTENSIONS (Stats, Values, Methodology)
+======================================================== */
+/* Stats Block */
+.stats-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; background: var(--bg-card); border: 1px solid var(--line-color); padding: 40px; border-radius: 8px; margin-top: 40px; }
+.stat-item { text-align: center; }
+.stat-number { font-size: 2.2rem; font-weight: 700; color: var(--tech-accent); margin-bottom: 5px; }
+.stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 600; }
+
+/* Values & Methodology */
+.complex-section { padding: 100px 10%; border-bottom: 1px solid var(--line-color); }
+.grid-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; }
+.card-detailed { background: #fff; padding: 40px; border: 1px solid var(--line-color); border-radius: 8px; transition: 0.4s; }
+.card-detailed:hover { border-color: var(--text-dark); box-shadow: 0 15px 30px rgba(0,0,0,0.02); }
+.card-index { font-size: 0.8rem; font-weight: 700; color: var(--tech-accent); margin-bottom: 20px; display: block; }
+.card-detailed h3 { font-size: 1.2rem; margin-bottom: 15px; font-weight: 700; }
+.card-detailed p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }
+
+/* Big Article View */
+.article-body { max-width: 800px; margin: 0 auto; padding: 80px 5%; }
+.article-paragraph { font-size: 1.05rem; color: var(--text-dark); line-height: 2; margin-bottom: 35px; opacity: 0.9; font-weight: 400; }
+.article-subheading { font-size: 1.4rem; font-weight: 700; margin: 50px 0 20px; letter-spacing: -0.5px; }
+.article-quote { border-left: 4px solid var(--tech-accent); padding-left: 30px; font-style: italic; color: var(--text-muted); margin: 40px 0; font-size: 1.1rem; line-height: 1.8; }
+
+/* ========================================================
+   SERVICES & SECTIONS (Existing Main Styles)
+======================================================== */
+.services-section { padding: 100px 10%; background: transparent; border-bottom: 1px solid var(--line-color); }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-main-title { font-size: 2rem; margin-top: 15px; font-weight: 700; }
+.services-grid, .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.service-item { background: var(--bg-card); padding: 50px 30px; text-align: left; transition: 0.4s ease; border: 1px solid var(--line-color); border-radius: 8px; }
+.service-item:hover { transform: translateY(-5px); border-color: var(--tech-accent); }
+.service-item h3 { font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; font-weight: 700; }
+.service-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }
+
+.testimonial-card { padding: 40px; background: var(--bg-card); border-left: 3px solid var(--tech-accent); border-radius: 4px; }
+.testimonial-text { font-style: italic; font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; }
+.testimonial-author { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
+.testimonial-company { font-size: 0.75rem; color: var(--tech-accent); }
+
+.partners-section { padding: 80px 10%; text-align: center; border-bottom: 1px solid var(--line-color); }
+.partners-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 30px; margin-top: 40px; }
+.partner-logo { display: flex; flex-direction: column; align-items: center; padding: 20px; filter: grayscale(100%); opacity: 0.5; transition: 0.4s; }
+.partner-logo:hover { filter: grayscale(0%); opacity: 1; }
+.partner-logo svg { width: 35px; height: 35px; margin-bottom: 10px; fill: var(--tech-accent); }
+.partner-name { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+
+.contact-container { max-width: 800px; margin: 0 auto; padding: 100px 5%; text-align: center; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+.val-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid #cbd5e1; padding: 15px 0; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: var(--text-dark); outline: none; transition: 0.4s; }
+.val-input:focus { border-bottom-color: var(--tech-accent); }
+.val-textarea { grid-column: span 2; resize: none; height: 100px; }
+
+.footer-contact { padding: 80px 10% 40px; text-align: center; background: var(--bg-card); border-top: 1px solid var(--line-color); }
+.footer-logo { font-size: 1.2rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
+.footer-logo span { color: var(--tech-accent); }
+.contact-address { font-size: 0.8rem; color: var(--text-muted); line-height: 2; margin: 20px 0; }
+.contact-actions { display: flex; justify-content: center; gap: 30px; }
+.copyright { margin-top: 60px; font-size: 0.6rem; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; }
+
+.section-subtitle { font-size: 0.7rem; letter-spacing: 3px; color: var(--tech-accent); text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 10px; }
+.btn-minimal { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--tech-accent); padding-bottom: 5px; border-bottom: 1px solid transparent; display: inline-block; transition: 0.4s; cursor: pointer; }
+.btn-minimal:hover { color: var(--tech-accent-hover); border-bottom-color: var(--tech-accent-hover); }
+.btn-solid { background: var(--tech-accent); color: #fff !important; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; padding: 16px 35px; display: inline-block; transition: 0.4s; border-radius: 4px; border: none; cursor: pointer; }
+.btn-solid:hover { background: var(--tech-accent-hover); transform: translateY(-2px); }
+
+/* ========================================================
+   RESPONSIVE DESIGN & MOBILE OPTIMIZATION
+======================================================== */
+
+@media (max-width: 950px) {
+  /* Navbar */
+  .navbar { padding: 20px 5%; flex-direction: column; gap: 15px; background: #fff !important; border-bottom: 1px solid var(--line-color); }
+  .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+  .nav-links a { margin: 0 5px; font-size: 0.75rem; }
+
+  /* Layout principal */
+  .split-section { grid-template-columns: 1fr; min-height: auto; }
+  .split-content { padding: 60px 5%; align-items: center; text-align: center; }
+  .split-image { min-height: 350px; border-left: none; border-top: 1px solid var(--line-color); border-bottom: 1px solid var(--line-color); }
+  
+  /* Secțiuni complexe și Grid-uri */
+  .services-grid, .testimonials-grid, .grid-cards, .stats-container, .blog-grid { grid-template-columns: 1fr; gap: 20px; }
+  .partners-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .val-textarea { grid-column: span 1; }
+
+  /* Ajustare padding-uri pentru secțiuni */
+  .complex-section, .services-section, .partners-section, .footer-contact, .related-articles { padding: 60px 5%; }
+  .page-header { padding: 140px 5% 60px; }
+  .stats-container { padding: 20px; }
+  
+  /* Blog & Articole */
+  .featured-post { grid-template-columns: 1fr; margin-bottom: 40px; }
+  .featured-image { min-height: 200px; }
+  .featured-content { padding: 30px 20px; }
+  
+  .newsletter-section { margin: 60px 5% 0; padding: 50px 5%; border-radius: 8px; }
+  .newsletter-form { flex-direction: column; width: 100%; }
+  .newsletter-form button { padding: 15px; width: 100%; }
+
+  .single-article-header { padding: 120px 5% 40px; }
+  .single-content { padding: 40px 5%; }
+  .modal-content { padding: 40px 20px; margin: 20px; }
+}
+
+/* ========================================================
+   MOBILE ONLY (Telefoane) - Aliniere și Animații Reduse
+======================================================== */
+@media (max-width: 768px) {
+  /* Aliniere și spațieri micro */
+  .hero { padding: 0 5%; }
+  .hero-brand { font-size: 2.2rem; }
+  .section-main-title { font-size: 1.6rem; }
+  
+  .card-detailed, .service-item, .testimonial-card { padding: 30px 20px; text-align: center; }
+  .author-box { flex-direction: column; text-align: center; padding: 20px; }
+  
+  /* Reducerea intensității animațiilor pentru a nu aglomera vizual ecranul mic */
+  .hero-content {
+      animation: fadeInUpMobile 1s ease-out forwards;
+  }
+  .tech-canvas {
+      animation: floatGraphicsMobile 6s ease-in-out infinite;
+      width: 90%;
+  }
+
+  /* Suprascrierea keyframe-urilor pentru mobil */
+  @keyframes floatGraphics {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-5px) rotate(1deg); } /* Redus de la 15px / 2deg */
+      100% { transform: translateY(0px) rotate(0deg); }
+  }
+
+  @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(15px); } /* Redus de la 30px */
+      to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulseNode {
+      0% { transform: scale(0.98); opacity: 0.7; box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.3); }
+      70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); } /* Redus de la 15px */
+      100% { transform: scale(0.98); opacity: 0.7; box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+  }
+}
+/* ========================================================
+   BLOG / HUB RESOURCES SECTIONS
+======================================================== */
+/* Filtre Categorii */
+.category-filters { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 50px; }
+.filter-btn { padding: 8px 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); background: transparent; border: 1px solid #e2e8f0; border-radius: 30px; cursor: pointer; transition: 0.3s ease; }
+.filter-btn:hover, .filter-btn.active { background: var(--tech-accent); color: #fff; border-color: var(--tech-accent); }
+
+/* Featured Blog Post (Hero Article) */
+.featured-post { display: grid; grid-template-columns: 1fr 1fr; background: var(--bg-card); border: 1px solid var(--line-color); border-radius: 12px; overflow: hidden; margin-bottom: 60px; transition: 0.4s; }
+.featured-post:hover { box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05); border-color: rgba(37, 99, 235, 0.3); }
+.featured-image { background: linear-gradient(135deg, #f1f5f9, #e2e8f0); position: relative; min-height: 300px; display: flex; justify-content: center; align-items: center; }
+.featured-content { padding: 50px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.blog-tag { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #fff; background: var(--tech-accent); padding: 5px 12px; border-radius: 4px; margin-bottom: 20px; display: inline-block; }
+.featured-title { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 15px; font-weight: 700; line-height: 1.3; color: var(--text-dark); }
+.featured-excerpt { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 25px; }
+
+/* Blog Grid & Cards */
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.blog-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line-color); border-radius: 8px; overflow: hidden; transition: 0.4s ease; cursor: pointer; }
+.blog-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.04); border-color: rgba(37, 99, 235, 0.3); }
+.blog-card-image { height: 200px; background: #f8fafc; border-bottom: 1px solid var(--line-color); display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; }
+.blog-card-content { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; }
+.blog-card-title { font-size: 1.1rem; font-weight: 700; margin: 15px 0; line-height: 1.4; color: var(--text-dark); }
+.blog-card-excerpt { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; flex-grow: 1; }
+.blog-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 15px; border-top: 1px solid var(--line-color); font-size: 0.75rem; font-weight: 600; color: var(--text-muted); }
+
+/* Newsletter Section */
+.newsletter-section { background: var(--text-dark); color: #fff; padding: 80px 10%; text-align: center; border-radius: 12px; margin: 80px 10% 0; }
+.newsletter-section h2 { font-size: 2rem; margin-bottom: 15px; }
+.newsletter-section p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 30px; max-width: 500px; margin-inline: auto; }
+.newsletter-form { display: flex; justify-content: center; gap: 10px; max-width: 500px; margin: 0 auto; }
+.newsletter-form input { flex-grow: 1; padding: 15px 20px; border-radius: 4px; border: none; font-family: 'Montserrat', sans-serif; outline: none; }
+.newsletter-form button { background: var(--tech-accent); color: #fff; border: none; padding: 0 30px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; cursor: pointer; transition: 0.3s; }
+.newsletter-form button:hover { background: var(--tech-accent-hover); }
+
+/* Responsive adjustments */
+@media (max-width: 950px) {
+    .featured-post { grid-template-columns: 1fr; }
+    .featured-image { min-height: 250px; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .newsletter-form { flex-direction: column; }
+    .newsletter-form button { padding: 15px; }
+    .newsletter-section { margin: 80px 5% 0; border-radius: 0; }
+}
+/* Filtrare JS */
+.blog-card.hide { display: none !important; }
+
+/* Single Article Layout */
+.single-article-header { padding: 160px 10% 60px; text-align: center; background: var(--bg-card); border-bottom: 1px solid var(--line-color); }
+.single-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; color: var(--text-dark); margin: 20px auto; max-width: 900px; line-height: 1.2; }
+.single-meta { display: flex; justify-content: center; gap: 20px; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; margin-top: 20px; }
+.single-meta span { display: flex; align-items: center; gap: 5px; }
+
+.single-content { max-width: 750px; margin: 0 auto; padding: 60px 5%; }
+.single-content p { font-size: 1.1rem; line-height: 1.9; color: #334155; margin-bottom: 25px; }
+.single-content h2 { font-size: 1.8rem; font-weight: 700; margin: 50px 0 20px; color: var(--text-dark); }
+.single-content h3 { font-size: 1.3rem; font-weight: 600; margin: 40px 0 15px; }
+.single-content ul { margin-bottom: 25px; padding-left: 20px; }
+.single-content li { font-size: 1.1rem; line-height: 1.9; color: #334155; margin-bottom: 10px; }
+
+.author-box { display: flex; align-items: center; gap: 20px; padding: 30px; background: #f8fafc; border: 1px solid var(--line-color); border-radius: 8px; margin: 60px 0; }
+.author-avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--tech-accent); color: #fff; display: flex; justify-content: center; align-items: center; font-weight: 700; font-size: 1.2rem; }
+.author-info h4 { font-size: 1.1rem; margin-bottom: 5px; }
+.author-info p { font-size: 0.9rem !important; margin-bottom: 0 !important; color: var(--text-muted); }
+
+.related-articles { padding: 80px 10%; background: var(--bg-card); border-top: 1px solid var(--line-color); }
+/* Modal Overlay */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 1000; overflow-y: auto; padding: 50px 0; }
+.modal-content { max-width: 800px; margin: 0 auto; background: #fff; padding: 60px; border: 1px solid var(--line-color); border-radius: 8px; position: relative; }
+.close-modal { position: absolute; top: 20px; right: 30px; font-size: 2rem; cursor: pointer; color: var(--text-muted); }
+
+/* Ne asigurăm că cardurile sunt clicabile */
+.blog-card { cursor: pointer; }
+/* --- Fix pentru Hero pe Mobil (Telefoane) --- */
+@media (max-width: 768px) {
+  /* Selectăm titlul mare din pagina de Index */
+  .hero-brand {
+    font-size: 2.5rem; /* Micșorăm fontul (ajustează 2.5rem sau 2rem dacă e nevoie) */
+    line-height: 1.2;
+    word-wrap: break-word; /* Previne ieșirea din ecran */
+  }
+
+  /* Forțăm cuvântul Intelligence să treacă dedesubt frumos */
+  .hero-brand span {
+    display: block; 
+    font-size: 2.2rem; /* Opțional: putem face cuvântul de jos un pic mai mic */
+  }
+}

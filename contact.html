@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | NEXUS CONSULT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Centrare verticală și orizontală */
+    .contact-page-wrapper { 
+        min-height: 100vh; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        padding: 150px 5%;
+    }
+    .contact-main-grid { 
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 80px; 
+        max-width: 1000px; 
+        width: 100%; 
+    }
+    @media (max-width: 768px) { .contact-main-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">NEXUS<span>CONSULT</span></a>
+    <div class="nav-links">
+      <a href="despre-noi.html">Despre Noi</a>
+      <a href="servicii.html">Servicii</a>
+      <a href="finantari.html">Finanțări</a>
+      <a href="viziune.html">Viziune</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+
+  <main class="contact-page-wrapper">
+    <div class="contact-main-grid">
+        
+        <div class="contact-info">
+            <span class="section-subtitle">Contact</span>
+            <h2 class="section-main-title" style="margin-bottom: 40px;">Programează un Audit Inițial</h2>
+            <p>Suntem pregătiți să analizăm provocările afacerii tale.</p>
+        </div>
+
+        <form action="#" class="contact-form">
+            <div class="form-grid">
+                <input type="text" class="val-input" placeholder="Nume Complet" required>
+                <input type="text" class="val-input" placeholder="Companie / Brand" required>
+                <input type="email" class="val-input" placeholder="Adresă de Email" required>
+                <input type="tel" class="val-input" placeholder="Telefon Contact">
+                <textarea class="val-input val-textarea" placeholder="Descrie pe scurt provocarea operațională sau tehnologică curentă..." required style="height: 120px;"></textarea>
+            </div>
+            <button type="submit" class="btn-solid" style="width: 100%; margin-top: 20px; cursor: pointer;">Trimite Solicitarea</button>
+        </form>
+
+    </div>
+  </main>
+
+</body>
+</html>
